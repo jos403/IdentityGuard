@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Layanan Faskes — ProtectAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/layanan.css">
+</head>
+<body>
+<div id="toastContainer" class="toast-container"></div>
+
+<div class="app-shell">
+  <div class="page">
+    <header class="dash-header">
+      <div><p class="dash-greeting" id="dashGreeting">Selamat datang</p><h2 id="dashNama">Peserta</h2></div>
+      <button class="icon-btn" onclick="handleLogout()" title="Keluar">⎋</button>
+    </header>
+
+    <div class="portal-hero">
+      <div class="ph-top"><a class="icon-btn glass" href="layanan.html" aria-label="Kembali">←</a><h3>Layanan Fasilitas Kesehatan</h3></div>
+      <p>Pilih rumah sakit, tentukan layanan, lalu ambil antrean tanpa menunggu lama.</p>
+      <div class="ph-badge">✅ Identitas terverifikasi · sesi berakhir <b id="sesiJam">--.--</b></div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" id="tabBtnCari" onclick="gantiTab('cari')">🔎 Cari Faskes</button>
+      <button class="tab" id="tabBtnTiket" onclick="gantiTab('tiket')">🎫 Tiket Saya <span class="tab-count" id="jmlTiket">0</span></button>
+    </div>
+
+    <!-- ===== TAB: CARI FASKES ===== -->
+    <div id="tabCari">
+      <input id="cariInput" class="field cari-input" type="search" placeholder="🔎 Cari nama rumah sakit atau wilayah…" oninput="S.q=this.value; renderList()">
+      <div class="chip-scroll" id="chipKota"></div>
+      <div class="filter-row">
+        <select id="selKelas" class="field" onchange="S.kelas=this.value; renderList()">
+          <option value="Semua">Semua kelas RS</option><option value="A">Kelas A</option><option value="B">Kelas B</option><option value="C">Kelas C</option>
+        </select>
+        <button class="btn btn-outline btn-sm" onclick="resetFilter()">Atur ulang</button>
+      </div>
+      <p class="filter-label">Layanan yang dicari</p>
+      <div class="chip-scroll" id="chipLayanan"></div>
+      <p class="hasil-info" id="hasilInfo"></p>
+      <div id="listFaskes"></div>
+      <p class="data-note">ℹ️ Daftar rumah sakit di atas adalah <b>data contoh</b> untuk prototype (bukan data resmi faskes bekerja sama BPJS Kesehatan).</p>
+    </div>
+
+    <!-- ===== TAB: TIKET SAYA ===== -->
+    <div id="tabTiket" class="hidden">
+      <div id="listTiket"></div>
+    </div>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <a class="nav-btn" href="home.html">🏠<span>Beranda</span></a>
+  <a class="nav-btn active" href="layanan.html">🧾<span>Layanan</span></a>
+  <a class="nav-btn" href="riwayat.html">💳<span>Riwayat</span></a>
+  <a class="nav-btn" href="profil.html">👤<span>Profil</span></a>
+</nav>
+
+<!-- BOTTOM SHEET: DETAIL FASKES & PEMESANAN -->
+<div id="sheet" class="sheet hidden" onclick="if(event.target===this) tutupSheet()">
+  <div class="sheet-box"><div class="sheet-handle"></div><div id="sheetBody"></div></div>
+</div>
+
+<!-- MODAL TIKET -->
+<div id="tiketModal" class="modal hidden" onclick="if(event.target===this) tutupTiket()">
+  <div class="modal-box tiket-box"><div id="tiketBody"></div>
+    <div class="modal-actions"><button class="btn btn-primary" onclick="window.print()">🖨️ Cetak</button><button class="btn btn-outline" onclick="tutupTiket()">Tutup</button></div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/db.js"></script>
+<script src="js/common.js"></script>
+<script src="js/faskes-data.js"></script>
+<script src="js/portal.js"></script>
+</body>
+</html>

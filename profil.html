@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profil Saya — ProtectAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/profil.css">
+</head>
+<body>
+<div id="toastContainer" class="toast-container"></div>
+
+<div class="app-shell">
+
+  <!-- ===== BAGIAN ATAS PROFIL ===== -->
+  <section class="profil-hero">
+    <div class="hero-waves"><i class="hw h1"></i><i class="hw h2"></i><i class="hw h3"></i></div>
+    <div class="hero-bar">
+      <a class="icon-btn glass" href="home.html" aria-label="Kembali">←</a>
+      <h3>Profil Saya</h3>
+      <button class="icon-btn glass" onclick="handleLogout()" aria-label="Keluar" title="Keluar">⎋</button>
+    </div>
+    <div class="avatar-wrap">
+      <div class="avatar-ring"><img id="profilFoto" alt="Foto profil"></div>
+      <span class="avatar-check" title="Identitas terverifikasi">✓</span>
+    </div>
+    <h2 id="profilNama">-</h2>
+    <p class="hero-user" id="profilUsername">-</p>
+    <div class="chip-row">
+      <span class="chip">🛡️ Peserta JKN</span>
+      <span class="chip" id="chipKelas">-</span>
+      <span class="chip" id="chipStatus">-</span>
+    </div>
+  </section>
+
+  <div class="page profil-body">
+
+    <!-- ===== KARTU PESERTA DIGITAL ===== -->
+    <div class="kartu-jkn">
+      <div class="kartu-shine"></div>
+      <div class="kartu-top"><span class="kartu-logo">🛡️ ProtectAI</span><span class="kartu-jenis">KARTU PESERTA DIGITAL</span></div>
+      <img class="kartu-foto" id="kartuFoto" alt="">
+      <div class="kartu-chip"></div>
+      <div class="kartu-nomor" id="kartuNomor">0000 0000 0000 0</div>
+      <div class="kartu-nama" id="kartuNama">-</div>
+      <div class="kartu-row">
+        <div><small>KELAS RAWAT</small><b id="kartuKelas">-</b></div>
+        <div><small>FASKES TINGKAT 1</small><b id="kartuFaskes">-</b></div>
+      </div>
+    </div>
+
+    <!-- ===== STATISTIK RINGKAS ===== -->
+    <div class="stat-grid">
+      <div class="stat"><b id="statBayar">0</b><span>Iuran Dibayar</span></div>
+      <div class="stat"><b id="statTiket">0</b><span>Tiket Layanan</span></div>
+      <div class="stat"><b id="statUsia">-</b><span>Usia</span></div>
+    </div>
+
+    <!-- ===== DATA PRIBADI ===== -->
+    <div class="card info-card">
+      <h4>👤 Data Pribadi</h4>
+      <div class="baris"><span>Nama Lengkap</span><b id="dNama">-</b></div>
+      <div class="baris">
+        <span>NIK</span>
+        <b><span id="dNik">-</span> <button class="eye-btn" id="btnEye" onclick="toggleNik()" aria-label="Tampilkan atau sembunyikan NIK">👁️</button></b>
+      </div>
+      <div class="baris"><span>Tanggal Lahir</span><b id="dTtl">-</b></div>
+      <div class="baris"><span>Alamat</span><b id="dAlamat">-</b></div>
+      <div class="baris"><span>Nomor HP</span><b id="dHp">-</b></div>
+    </div>
+
+    <!-- ===== DATA KEPESERTAAN ===== -->
+    <div class="card info-card">
+      <h4>🏥 Data Kepesertaan</h4>
+      <div class="baris"><span>Nomor Kartu</span><b id="dKartu">-</b></div>
+      <div class="baris"><span>Faskes Tingkat 1</span><b id="dFaskes">-</b></div>
+      <div class="baris"><span>Kelas Rawat</span><b id="dKelas">-</b></div>
+      <div class="baris"><span>Iuran per Bulan</span><b id="dIuran">-</b></div>
+      <div class="baris"><span>Status Iuran Bulan Ini</span><b id="dStatusIuran">-</b></div>
+      <div class="baris"><span>Bergabung Sejak</span><b id="dBergabung">-</b></div>
+    </div>
+
+    <!-- ===== KEAMANAN AKUN ===== -->
+    <div class="card info-card">
+      <h4>🔐 Keamanan Akun</h4>
+      <div class="baris"><span>Verifikasi Wajah</span><b><span class="badge badge-ok">Aktif</span></b></div>
+      <div class="baris"><span>Kunci Satu Perangkat</span><b><span class="badge badge-ok">Aktif</span></b></div>
+      <div class="baris"><span>Perangkat Terdaftar</span><b id="dPerangkat" class="mono">-</b></div>
+      <div class="baris"><span>Terakhir Masuk</span><b id="dTerakhir">-</b></div>
+      <div class="tips-box">
+        💡 <b>Tips keamanan:</b> jangan pernah meminjamkan atau membagikan akun, kartu, maupun kode verifikasi Anda kepada siapa pun.
+      </div>
+    </div>
+
+    <button class="btn btn-keluar btn-block" onclick="handleLogout()">⎋ Keluar dari Akun</button>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <a class="nav-btn" href="home.html">🏠<span>Beranda</span></a>
+  <a class="nav-btn" href="layanan.html">🧾<span>Layanan</span></a>
+  <a class="nav-btn" href="riwayat.html">💳<span>Riwayat</span></a>
+  <a class="nav-btn active" href="profil.html">👤<span>Profil</span></a>
+</nav>
+
+<script src="js/config.js"></script>
+<script src="js/db.js"></script>
+<script src="js/common.js"></script>
+<script src="js/profil.js"></script>
+</body>
+</html>

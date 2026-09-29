@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beranda — ProtectAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+<div id="toastContainer" class="toast-container"></div>
+
+<div class="app-shell">
+  <div class="page">
+    <header class="dash-header">
+      <div><p class="dash-greeting" id="dashGreeting">Selamat datang</p><h2 id="dashNama">Peserta</h2></div>
+      <button class="icon-btn" onclick="handleLogout()" title="Keluar">⎋</button>
+    </header>
+
+    <div class="banner-card">
+      <strong>Detect Smarter, Protect JKN</strong>
+      <p>Sistem AI anti-fraud kepesertaan JKN Anda aktif &amp; terpantau.</p>
+    </div>
+
+    <div class="menu-grid">
+      <a class="menu-item" href="layanan.html"><div class="menu-icon">🧾</div>Ajukan Layanan</a>
+      <a class="menu-item" href="riwayat.html"><div class="menu-icon">💳</div>Bayar &amp; Riwayat Iuran</a>
+      <a class="menu-item" href="layanan.html#liveness"><div class="menu-icon">🙂</div>Liveness Check</a>
+      <a class="menu-item" href="obat.html"><div class="menu-icon">💊</div>Cek Dosis Obat</a>
+      <a class="menu-item" href="profil.html"><div class="menu-icon">👤</div>Info Peserta</a>
+      <a class="menu-item" href="riwayat.html"><div class="menu-icon">📜</div>Riwayat Pembayaran</a>
+    </div>
+
+    <!-- ===== SLIDER INFORMASI ===== -->
+    <div class="section-head">
+      <h3>Informasi BPJS Kesehatan</h3>
+      <span>Geser atau tunggu otomatis</span>
+    </div>
+    <div class="slider" id="infoSlider">
+      <div class="slider-viewport"><div class="slider-track" id="sliderTrack"></div></div>
+      <button class="slider-arrow prev" aria-label="Sebelumnya">‹</button>
+      <button class="slider-arrow next" aria-label="Berikutnya">›</button>
+    </div>
+    <div class="slider-dots" id="sliderDots"></div>
+
+    <!-- ===== KONTAK PENTING ===== -->
+    <div class="section-head"><h3>Kontak &amp; Bantuan</h3></div>
+    <div class="kontak-list" id="kontakList"></div>
+
+    <p class="footer-note">ProtectAI · Prototype Healthkathon 2026<br>Data pada aplikasi ini adalah simulasi.</p>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <a class="nav-btn active" href="home.html">🏠<span>Beranda</span></a>
+  <a class="nav-btn" href="layanan.html">🧾<span>Layanan</span></a>
+  <a class="nav-btn" href="riwayat.html">💳<span>Riwayat</span></a>
+  <a class="nav-btn" href="profil.html">👤<span>Profil</span></a>
+</nav>
+
+<!-- MODAL DETAIL INFORMASI -->
+<div id="infoModal" class="modal hidden" onclick="if(event.target===this) tutupInfo()">
+  <div class="modal-box info-box">
+    <button class="info-close" onclick="tutupInfo()" aria-label="Tutup">✕</button>
+    <div id="infoModalBody"></div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/db.js"></script>
+<script src="js/common.js"></script>
+<script src="js/info-data.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

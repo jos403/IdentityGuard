@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cek Obat — ProtectAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="toastContainer" class="toast-container"></div>
+
+<div class="app-shell">
+  <div class="page">
+    <header class="dash-header">
+      <div><p class="dash-greeting" id="dashGreeting">Selamat datang</p><h2 id="dashNama">Peserta</h2></div>
+      <button class="icon-btn" onclick="handleLogout()">⎋</button>
+    </header>
+
+    <div class="topbar"><a class="icon-btn" href="home.html">←</a><h3>Cek Kewajaran Dosis Obat</h3></div>
+
+    <div class="card">
+      <p class="hint">Data dosis normal di bawah adalah data simulasi untuk kebutuhan demo prototype.</p>
+      <select id="obatSelect" class="field">
+        <option value="Paracetamol 500mg|30">Paracetamol 500mg (maks 30 tablet/resep)</option>
+        <option value="Amoxicillin 500mg|21">Amoxicillin 500mg (maks 21 kapsul/resep)</option>
+        <option value="Amlodipine 5mg|30">Amlodipine 5mg (maks 30 tablet/resep)</option>
+      </select>
+      <input id="jumlahObat" type="number" class="field" placeholder="Jumlah diminta">
+      <button class="btn btn-primary btn-block" onclick="cekObat()">Cek Kewajaran</button>
+      <div id="obatStatus" class="status-line"></div>
+    </div>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <a class="nav-btn" href="home.html">🏠<span>Beranda</span></a>
+  <a class="nav-btn" href="layanan.html">🧾<span>Layanan</span></a>
+  <a class="nav-btn" href="riwayat.html">💳<span>Riwayat</span></a>
+  <a class="nav-btn" href="profil.html">👤<span>Profil</span></a>
+</nav>
+
+<script src="js/config.js"></script>
+<script src="js/db.js"></script>
+<script src="js/common.js"></script>
+<script src="js/obat.js"></script>
+</body>
+</html>

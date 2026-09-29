@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masuk — ProtectAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="toastContainer" class="toast-container"></div>
+
+<div class="app-shell">
+  <div class="page">
+    <div class="auth-hero">
+      <div class="logo-badge">🛡️</div>
+      <h1>ProtectAI</h1>
+      <p>Identity Guard · Efisiensi Risiko Peserta JKN</p>
+    </div>
+    <div class="auth-card">
+      <h2>Masuk ke Akun</h2>
+      <label class="field-label">Username</label>
+      <input id="loginUsername" class="field" type="text" placeholder="Masukkan username">
+      <label class="field-label">Password</label>
+      <input id="loginPassword" class="field" type="password" placeholder="Masukkan password">
+
+      <div class="face-capture-row">
+        <div class="face-preview" id="loginFacePreview"><span>🙂</span></div>
+        <div>
+          <button class="btn btn-outline btn-sm" onclick="openCaptureModal('Verifikasi Wajah Login', onLoginFaceCaptured)">📷 Scan Wajah</button>
+          <p class="hint">Wajib untuk memastikan Anda pemilik akun asli.</p>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block" onclick="handleLogin()">Masuk</button>
+      <div id="loginStatus" class="status-line"></div>
+      <button id="btnDemo" class="btn btn-outline btn-block hidden" onclick="masukDemo()">🧪 Masuk sebagai Akun Demo (Mode Developer)</button>
+      <p class="switch-link">Belum punya akun? <a href="register.html">Registrasi Peserta Baru</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL KAMERA -->
+<div id="cameraModal" class="modal hidden">
+  <div class="modal-box">
+    <h3 id="cameraModalTitle">Ambil Foto</h3>
+    <video id="cameraVideo" autoplay muted playsinline class="video-box"></video>
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="cameraCaptureBtn">Ambil Foto</button>
+      <button class="btn btn-outline" onclick="closeCameraModal()">Batal</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/db.js"></script>
+<script src="js/common.js"></script>
+<script src="js/faceapi-helpers.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

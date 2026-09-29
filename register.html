@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registrasi — ProtectAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="toastContainer" class="toast-container"></div>
+
+<div class="app-shell">
+  <div class="page">
+    <div class="topbar">
+      <a class="icon-btn" href="login.html">←</a>
+      <h2>Registrasi Peserta Baru</h2>
+    </div>
+
+    <div class="auth-card">
+      <h3 class="section-title">1. Data Akun</h3>
+      <label class="field-label">Username</label>
+      <input id="regUsername" class="field" type="text" placeholder="Buat username">
+      <label class="field-label">Password</label>
+      <input id="regPassword" class="field" type="password" placeholder="Buat password">
+
+      <h3 class="section-title">2. Data Kepesertaan BPJS</h3>
+      <label class="field-label">NIK (16 digit)</label>
+      <input id="regNik" class="field" type="text" maxlength="16" placeholder="16 digit NIK sesuai KTP">
+      <label class="field-label">Nama Lengkap</label>
+      <input id="regNama" class="field" type="text" placeholder="Sesuai KTP">
+      <label class="field-label">Tanggal Lahir</label>
+      <input id="regTgl" class="field" type="date">
+      <label class="field-label">Alamat</label>
+      <input id="regAlamat" class="field" type="text" placeholder="Alamat sesuai KTP">
+      <label class="field-label">No. HP (terhubung WhatsApp)</label>
+      <input id="regHp" class="field" type="text" placeholder="08xxxxxxxxxx">
+      <label class="field-label">Fasilitas Kesehatan Tingkat 1</label>
+      <select id="regFaskes" class="field">
+        <option>Puskesmas Bogor Utara</option>
+        <option>Klinik Sehat Sentosa</option>
+        <option>RS Melati Medika</option>
+      </select>
+      <label class="field-label">Kelas Rawat</label>
+      <select id="regKelas" class="field">
+        <option value="I">Kelas I — Rp150.000/bulan</option>
+        <option value="II">Kelas II — Rp100.000/bulan</option>
+        <option value="III">Kelas III — Rp42.000/bulan (subsidi Rp7.000, dibayar Rp35.000)</option>
+      </select>
+
+      <h3 class="section-title">3. Verifikasi Identitas</h3>
+      <p class="hint">Foto KTP dan selfie akan dicocokkan AI, lalu selfie ini akan disimpan sebagai data wajah resmi Anda untuk login &amp; verifikasi layanan berikutnya.</p>
+
+      <label class="field-label">Foto KTP (wajah harus terlihat jelas)</label>
+      <input type="file" id="regKtpInput" accept="image/*" class="field">
+      <img id="regKtpPreview" class="preview-img hidden">
+      <div id="regKtpStatus" class="status-line"></div>
+
+      <label class="field-label" style="margin-top:14px;">Foto Selfie On-the-Spot</label>
+      <div class="face-capture-row">
+        <div class="face-preview" id="regSelfiePreview"><span>🙂</span></div>
+        <button class="btn btn-outline btn-sm" onclick="openCaptureModal('Ambil Selfie Registrasi', onRegSelfieCaptured)">📷 Ambil Selfie</button>
+      </div>
+      <div id="regSelfieStatus" class="status-line"></div>
+
+      <button class="btn btn-primary btn-block" style="margin-top:18px;" onclick="handleRegistrasi()">Daftar &amp; Verifikasi ke Pemerintah</button>
+      <div id="regStatus" class="status-line"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL KAMERA -->
+<div id="cameraModal" class="modal hidden">
+  <div class="modal-box">
+    <h3 id="cameraModalTitle">Ambil Foto</h3>
+    <video id="cameraVideo" autoplay muted playsinline class="video-box"></video>
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="cameraCaptureBtn">Ambil Foto</button>
+      <button class="btn btn-outline" onclick="closeCameraModal()">Batal</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/db.js"></script>
+<script src="js/common.js"></script>
+<script src="js/faceapi-helpers.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>
